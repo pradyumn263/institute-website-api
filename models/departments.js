@@ -1,57 +1,59 @@
-const mongoose = require('mongoose');
-const {ObjectId} = mongoose.Schema;
+const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Schema;
 
 const tabContent = new mongoose.Schema({
-    tabTitle: {
-        type: String,
-        required: true,
+  tabTitle: {
+    type: String,
+    required: true,
+  },
+  tabContent: {
+    time: {
+      type: Date,
     },
-    tabContent: {
-        time: {
-            type: Date
+    blocks: [
+      {
+        id: {
+          type: String,
         },
-        blocks: [
-            {
-                id: {
-                    type: String
-                },
-                type: {
-                    type: String
-                },
-                data: {
-                    type: {}
-                }
-            }
-        ],
-        version: {
-            type: String
-        }
-    }
-})
+        type: {
+          type: String,
+        },
+        data: {
+          type: {},
+        },
+      },
+    ],
+    version: {
+      type: String,
+    },
+  },
+});
 
-const departmentSchema = new mongoose.Schema({
+const departmentSchema = new mongoose.Schema(
+  {
     deptShortName: {
-        type: String,
-        trim: true,
-        required: true,
-        maxlength: 10
+      type: String,
+      trim: true,
+      required: true,
+      maxlength: 10,
     },
     deptFullName: {
-        type: String,
-        trim: true,
-        required: true,
-        maxlength: 100
+      type: String,
+      trim: true,
+      required: true,
+      maxlength: 100,
     },
     deptHOD: {
-        type: ObjectId,
-        ref: "User",
-        required: true
+      type: ObjectId,
+      ref: "User",
     },
     deptEmail: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
-    content: [tabContent]
-}, {timestamps: true});
+    content: [tabContent],
+  },
+  { timestamps: true }
+);
 
 module.exports = mongoose.model("Department", departmentSchema);
