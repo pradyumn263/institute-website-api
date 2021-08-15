@@ -1,6 +1,6 @@
 const PendingRegistration = require("../models/pendingRegistrations");
 const User = require("../models/user");
-const Department = require("../models/departments");
+const Department = require("../models/department");
 
 const password = require("secure-random-password");
 
