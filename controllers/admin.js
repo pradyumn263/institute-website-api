@@ -126,9 +126,9 @@ exports.postPendingRegistrationReject = (req, res, next) => {
 
 // MARK :- Department Admin Controllers
 exports.postDepartment = (req, res, next) => {
-  const { deptShortName, deptFullName, deptEmail } = req.body;
+  const { shortName, fullName, email } = req.body;
 
-  Department.findOne({ deptShortName }).exec((err, department) => {
+  Department.findOne({ shortName }).exec((err, department) => {
     if (err || department) {
       return res.json({
         error: "There is an error, or department already exists",
@@ -136,9 +136,9 @@ exports.postDepartment = (req, res, next) => {
     }
 
     const newDepartment = new Department({
-      deptShortName,
-      deptFullName,
-      deptEmail,
+      shortName,
+      fullName,
+      email,
     });
 
     newDepartment.save((err, result) => {

@@ -3,23 +3,23 @@ const { ObjectId } = mongoose.Schema;
 
 const departmentSchema = new mongoose.Schema(
   {
-    deptShortName: {
+    shortName: {
       type: String,
       trim: true,
       required: true,
       maxlength: 10,
     },
-    deptFullName: {
+    fullName: {
       type: String,
       trim: true,
       required: true,
       maxlength: 100,
     },
-    deptHOD: {
+    hod: {
       type: ObjectId,
       ref: "User",
     },
-    deptEmail: {
+    email: {
       type: String,
       required: true,
     },
